@@ -1,0 +1,13 @@
+.TaskItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.TaskItem label {
+  padding: 5px;
+}
+
+.TaskItem button {
+  padding: 2px;
+}
