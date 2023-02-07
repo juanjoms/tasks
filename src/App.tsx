@@ -17,13 +17,19 @@ function App() {
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const newTask: Task = {name: taskName, id: new Date().getTime()};
-    setTasks([...tasks, newTask]);
+    const updatedTasks = [...tasks, {name: taskName, id: new Date().getTime()}];
+    setTasks(updatedTasks);
     setTaskName ('');
   };
 
   const handleRemove = (task: Task) => {
-    setTasks(tasks.filter(item => item.id !== task.id))
+    const updatedTasks = tasks.filter(item => item.id !== task.id);
+    setTasks(updatedTasks);
+  }
+
+  const toggleCompleted = (task: Task, completed: boolean) => {
+    const updatedTasks = tasks.map(taskItem => taskItem.id === task.id ? {...task, completed} : taskItem);
+    setTasks(updatedTasks);
   }
 
   const clearAllTasks = () => {
@@ -37,7 +43,11 @@ function App() {
       </form>
       {
         tasks.map(task =>
-          <TaskItem key={task.id} task={task} onRemove={() => handleRemove(task)}></TaskItem>
+          <TaskItem
+            key={task.id}
+            task={task}
+            toggleComplete={(completed)=> {toggleCompleted(task, completed)}}
+            onRemove={() => handleRemove(task)} />
         )
       }
       <br />
