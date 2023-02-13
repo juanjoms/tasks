@@ -3,3 +3,13 @@
   margin: 0 auto;
   text-align: center;
 }
+
+.TaskList {
+  min-height: 50px;
+  border: 1px solid var(--border);
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 #0000, 0 0 #0000, 0 10px 15px -3px rgb(0 0 0 / 10%),
+    0 4px 6px -2px rgb(0 0 0 / 5%);
+  background-color: var(--surface-2);
+}
