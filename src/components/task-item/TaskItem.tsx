@@ -1,3 +1,4 @@
+import { IonTrash } from "../../Icons";
 import { Task } from "../../models/task";
 import "./TaskItem.css";
 type Props = {
@@ -15,7 +16,7 @@ export const TaskItem = ({
   onDragEnd,
 }: Props) => (
   <div
-    className="TaskItem"
+    className="TaskItem task"
     draggable="true"
     onDragStart={onDragStart}
     onDragEnd={onDragEnd}
@@ -30,6 +31,8 @@ export const TaskItem = ({
 
       {task.name}
     </label>
-    <button onClick={onRemove}>X</button>
+    <button onClick={onRemove}>
+      <IonTrash></IonTrash>
+    </button>
   </div>
 );

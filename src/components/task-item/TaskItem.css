@@ -1,12 +1,12 @@
 .TaskItem {
-  display: flex;
-  justify-content: space-between;
   cursor: grab;
 }
 
-
+.TaskItem:hover {
+  border: 1px solid rgba(4, 150, 255, 0.4);
+}
 .TaskItem label {
-  padding: 5px;
+  cursor: text;
 }
 
 .TaskItem button {

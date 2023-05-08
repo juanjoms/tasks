@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { TaskItem } from "./components/task-item/TaskItem";
 import { Task } from "./models/task";
+import { TaskInput } from "./components/task-input/TaskInput";
 
 const storagedTasks = localStorage.getItem("tasks");
 const initialTasks = storagedTasks ? JSON.parse(storagedTasks) : [];
@@ -14,14 +15,12 @@ function App() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const addTask = (taskName: string) => {
     const updatedTasks = [
-      ...tasks,
       { name: taskName, id: `${new Date().getTime()}` },
+      ...tasks,
     ];
     setTasks(updatedTasks);
-    setTaskName("");
   };
 
   const handleRemove = (task: Task) => {
@@ -37,8 +36,8 @@ function App() {
   };
 
   function dragstart_handler(ev: React.DragEvent<HTMLDivElement>) {
-    (ev.target as HTMLElement).style.opacity = '0.2';
-    (ev.target as HTMLElement).classList.add('grabbing');
+    (ev.target as HTMLElement).style.opacity = "0.2";
+    (ev.target as HTMLElement).classList.add("grabbing");
     ev.dataTransfer.effectAllowed = "copyMove";
 
     //(ev.target as HTMLElement).style.cursor = 'grab';
@@ -47,7 +46,7 @@ function App() {
   }
 
   function dragend_handler(ev: React.DragEvent<HTMLDivElement>) {
-    (ev.target as HTMLElement).style.opacity = '1';
+    (ev.target as HTMLElement).style.opacity = "1";
   }
 
   function dragover_handler(ev: any) {
@@ -63,23 +62,19 @@ function App() {
 
   return (
     <div className="App">
-
       <h3>Focus on:</h3>
-      <div className="TaskList" onDrop={drop_handler} onDragOver={dragover_handler}>
+      <div
+        className="TaskList"
+        onDrop={drop_handler}
+        onDragOver={dragover_handler}
+      >
         Drop tasks here
       </div>
 
       <h3>To Do Tasks </h3>
-      <form onSubmit={handleFormSubmit}>
-        <input
-          type="text"
-          placeholder="New Task..."
-          value={taskName}
-          onChange={(e) => setTaskName(e.target.value)}
-          id="pichula"
-        />
-      </form>
+
       <div className="TaskList">
+        <TaskInput onAdd={(name) => addTask(name)}></TaskInput>
         {tasks.map((task) => (
           <TaskItem
             key={task.id}
