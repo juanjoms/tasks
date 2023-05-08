@@ -1,0 +1,19 @@
+.TaskInput.active {
+  border: 1px solid rgba(4, 150, 255, 0.4);
+}
+.TaskInput label {
+  flex-grow: 1;
+}
+.TaskInput input {
+  width: 100%;
+  border: none;
+  font-size: 1rem;
+}
+
+.TaskInput input:focus {
+  outline: none;
+}
+
+.TaskInput svg {
+  display: block;
+}
