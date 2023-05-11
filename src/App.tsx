@@ -9,7 +9,6 @@ const initialTasks = storagedTasks ? JSON.parse(storagedTasks) : [];
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
-  const [taskName, setTaskName] = useState("");
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -17,7 +16,7 @@ function App() {
 
   const addTask = (taskName: string) => {
     const updatedTasks = [
-      { name: taskName, id: `${new Date().getTime()}` },
+      { name: taskName, id: `${new Date().getTime()}`, completed: false },
       ...tasks,
     ];
     setTasks(updatedTasks);
