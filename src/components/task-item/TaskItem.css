@@ -1,14 +1,22 @@
 .TaskItem {
   cursor: grab;
+  gap: 8px;
 }
 
 .TaskItem:hover {
   border: 1px solid rgba(4, 150, 255, 0.4);
 }
-.TaskItem label {
+
+.TaskItem.completed .content {
+  text-decoration:line-through;
+  opacity: 0.4;
+}
+.TaskItem .content {
+  flex-grow: 1;
   cursor: text;
 }
 
 .TaskItem button {
   padding: 2px;
+  color:rgba(0, 0, 0, 0.7);
 }

@@ -1,9 +1,11 @@
 .App {
   max-width: 400px;
   margin: 0 auto;
-  text-align: center;
 }
 
+.App h3 {
+  text-align: center;
+}
 .TaskList {
   min-height: 50px;
   display: flex;
